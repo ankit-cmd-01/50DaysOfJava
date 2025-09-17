@@ -1,0 +1,112 @@
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+/**
+ * A simple demonstration of the core Java Collections Framework interfaces:
+ * List, Set, and Map.
+ */
+public class CollectionsIntro {
+
+    public static void main(String[] args) {
+        System.out.println("Welcome to the Java Collections Framework! 🚀");
+
+        demonstrateList();
+        demonstrateSet();
+        demonstrateMap();
+    }
+
+    /**
+     * Demonstrates the List interface using an ArrayList.
+     * A List is an ordered collection that allows duplicate elements.
+     */
+    public static void demonstrateList() {
+        System.out.println("\n--- 1. Demonstrating List (ArrayList) ---");
+        // ArrayList is a resizable array implementation of the List interface.
+        List<String> fruits = new ArrayList<>();
+
+        // Adding elements
+        fruits.add("Apple");
+        fruits.add("Banana");
+        fruits.add("Cherry");
+        fruits.add("Banana"); // Duplicates are allowed
+
+        System.out.println("Full List: " + fruits);
+        System.out.println("Element at index 1: " + fruits.get(1)); // Access by index
+        System.out.println("List size: " + fruits.size());
+
+        System.out.println("Iterating over the list:");
+        for (String fruit : fruits) {
+            System.out.println("- " + fruit);
+        }
+        System.out.println("Key features of List: Ordered, allows duplicates, index-based access.");
+    }
+
+    /**
+     * Demonstrates the Set interface using a HashSet.
+     * A Set is a collection that contains no duplicate elements.
+     */
+    public static void demonstrateSet() {
+        System.out.println("\n--- 2. Demonstrating Set (HashSet) ---");
+        // HashSet is an implementation of Set that does not guarantee order.
+        Set<String> uniqueColors = new HashSet<>();
+
+        // Adding elements
+        uniqueColors.add("Red");
+        uniqueColors.add("Green");
+        uniqueColors.add("Blue");
+        boolean isAdded = uniqueColors.add("Red"); // This will not be added again
+
+        System.out.println("Full Set: " + uniqueColors);
+        System.out.println("Was the second 'Red' added? " + isAdded); // Will print false
+        System.out.println("Does the set contain 'Green'? " + uniqueColors.contains("Green"));
+
+        System.out.println("Iterating over the set (order not guaranteed):");
+        for (String color : uniqueColors) {
+            System.out.println("- " + color);
+        }
+        System.out.println("Key features of Set: Unordered, no duplicate elements.");
+    }
+
+    /**
+     * Demonstrates the Map interface using a HashMap.
+     * A Map is an object that maps keys to values. It cannot contain duplicate keys.
+     */
+    public static void demonstrateMap() {
+        System.out.println("\n--- 3. Demonstrating Map (HashMap) ---");
+        // HashMap stores data in (key, value) pairs.
+        Map<String, Integer> studentScores = new HashMap<>();
+
+        // Adding key-value pairs
+        studentScores.put("Alice", 95);
+        studentScores.put("Bob", 88);
+        studentScores.put("Charlie", 92);
+        studentScores.put("Alice", 98); // This will update the existing value for "Alice"
+
+        System.out.println("Full Map: " + studentScores);
+        System.out.println("Bob's score: " + studentScores.get("Bob")); // Get value by key
+        System.out.println("Map size: " + studentScores.size());
+
+        // Iterating over the map's keys
+        System.out.println("\nIterating over keys:");
+        for (String name : studentScores.keySet()) {
+            System.out.println("Key: " + name);
+        }
+
+        // Iterating over the map's values
+        System.out.println("\nIterating over values:");
+        for (Integer score : studentScores.values()) {
+            System.out.println("Value: " + score);
+        }
+        
+        // Iterating over the map's entries (key-value pairs)
+        System.out.println("\nIterating over entries (key-value pairs):");
+        for (Map.Entry<String, Integer> entry : studentScores.entrySet()) {
+            System.out.println(entry.getKey() + " scored " + entry.getValue());
+        }
+        System.out.println("Key features of Map: Unique keys, stores key-value pairs.");
+    }
+}
